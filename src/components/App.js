@@ -1,9 +1,14 @@
 // @flow
 
 import React from "react";
+import Card from "./Card";
 
 function App() {
-    return <h1>Hello Memory</h1>;
+    return (
+        <div>
+            <Card card={"Hello"} />
+        </div>
+    );
 }
 
 export default App;
