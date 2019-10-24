@@ -1,12 +1,11 @@
 // @flow
 
 import React from "react";
-import {FaBeer} from "react-icons/fa";
 
-function Card(props) {
+function Card({Icon}: {Icon: Object}) {
     return (
         <div>
-            <FaBeer />
+            <Icon size={40} />
         </div>
     );
 }
