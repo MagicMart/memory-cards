@@ -36,11 +36,13 @@ const iconsArr = [
 const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
-
-    width: 600px;
-    height: 600px;
-    background: green;
+    width: 500px;
+    height: 500px;
     margin: 0 auto;
+    padding: 7px;
+    background: #03fcf0;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px grey;
 `;
 
 const shuffleArr = arr => [...arr.sort(() => 0.5 - Math.random())];
