@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+const StyledCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,9 +18,9 @@ const Container = styled.div`
 
 function Card({Icon}: {Icon: Object}) {
     return (
-        <Container>
+        <StyledCard>
             <Icon size={45} />
-        </Container>
+        </StyledCard>
     );
 }
 
