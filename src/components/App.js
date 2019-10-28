@@ -2,6 +2,7 @@
 
 import React from "react";
 import Card from "./Card";
+import ScorePanel from "./ScorePanel";
 import styled from "styled-components";
 import {
     FaBug,
@@ -34,6 +35,15 @@ const iconsArr = [
 ];
 
 const Container = styled.div`
+    width: 500px;
+    margin: 0 auto;
+    .header {
+        text-align: center;
+        background: red;
+    }
+`;
+
+const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 500px;
@@ -50,8 +60,11 @@ const shuffleArr = arr => [...arr.sort(() => 0.5 - Math.random())];
 const reducer = (state, action) => {
     switch (action.type) {
         case "open":
-            console.log("action payload", action.payload);
-            state = {...state, open: [...state.open, ...action.payload]};
+            state = {
+                ...state,
+                open: [...state.open, ...action.payload],
+                moves: state.moves + 1
+            };
             return state;
         case "close":
             state = {...state, open: []};
@@ -81,25 +94,31 @@ function App() {
             }
             setTimeout(() => {
                 dispatch({type: "close"});
-            }, 1000);
+            }, 600);
         }
     }, [state.open]);
     return (
-        <Container>
-            {icons.map((icon, i) => (
-                <Card
-                    key={i + icon.name}
-                    Icon={icon}
-                    name={icon.name}
-                    index={i}
-                    dispatch={dispatch}
-                    state={state}
-                />
-            ))}
-            <button onClick={() => setIcons(icons => shuffleArr(icons))}>
-                Shuffle
-            </button>
-        </Container>
+        <React.Fragment>
+            <Container>
+                <h1 className="header">Memory Game Cards</h1>
+                <ScorePanel moves={state.moves} />
+            </Container>
+            <CardContainer>
+                {icons.map((icon, i) => (
+                    <Card
+                        key={i + icon.name}
+                        Icon={icon}
+                        name={icon.name}
+                        index={i}
+                        dispatch={dispatch}
+                        state={state}
+                    />
+                ))}
+                <button onClick={() => setIcons(icons => shuffleArr(icons))}>
+                    Shuffle
+                </button>
+            </CardContainer>
+        </React.Fragment>
     );
 }
 

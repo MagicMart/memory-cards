@@ -31,16 +31,28 @@ const StyledCard = styled.div`
     width: 23%;
     height: 23%;
     margin: 1%;
-    background: ${props => (props.matched ? "green" : "#02b3e4")}
+    background: ${props => (props.matched ? "green" : "#02b3e4")};
     border-radius: 15px;
     border: 1px solid grey;
     .icon {
         animation: inherit;
-        color: ${props => (props.open || props.matched ? "white" : "#02b3e4")}
+        color: ${props => (props.open || props.matched ? "white" : "#02b3e4")};
     }
 `;
 
-function Card({Icon, name, index, dispatch, state}: {Icon: Object}) {
+function Card({
+    Icon,
+    name,
+    index,
+    dispatch,
+    state
+}: {
+    Icon: Object,
+    name: string,
+    index: number,
+    state: Object,
+    dispatch: Function
+}) {
     return (
         <StyledCard
             open={state.open.includes(index) || state.matched.includes(name)}
