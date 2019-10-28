@@ -37,10 +37,11 @@ const iconsArr = [
 const Container = styled.div`
     width: 500px;
     margin: 0 auto;
-    .header {
-        text-align: center;
-        margin: 0.3em 0;
-    }
+`;
+
+const Title = styled.h1`
+    text-align: center;
+    margin: 0.3em 0;
 `;
 
 const CardContainer = styled.div`
@@ -99,8 +100,8 @@ function App() {
     }, [state.open]);
     return (
         <React.Fragment>
+            <Title>Memory Game Cards</Title>
             <Container>
-                <h1 className="header">Memory Game Cards</h1>
                 <ScorePanel moves={state.moves} />
             </Container>
             <CardContainer>
