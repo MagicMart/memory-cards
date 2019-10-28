@@ -5,6 +5,8 @@ import styled from "styled-components";
 const StyledScorePanel = styled.div`
     display: flex;
     justify-content: space-evenly;
+    font-size: 1.5rem;
+    margin: 0.3em;
 `;
 
 function ScorePanel({moves}) {

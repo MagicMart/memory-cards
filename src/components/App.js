@@ -39,7 +39,7 @@ const Container = styled.div`
     margin: 0 auto;
     .header {
         text-align: center;
-        background: red;
+        margin: 0.3em 0;
     }
 `;
 
