@@ -31,24 +31,28 @@ const StyledCard = styled.div`
     width: 23%;
     height: 23%;
     margin: 1%;
-    background: #02b3e4;
+    background: ${props => (props.matched ? "green" : "#02b3e4")}
     border-radius: 15px;
     border: 1px solid grey;
     .icon {
         animation: inherit;
+        color: ${props => (props.open || props.matched ? "white" : "#02b3e4")}
     }
 `;
 
-function Card({Icon}: {Icon: Object}) {
-    const [openCard, setOpenCard] = React.useState(false);
-    console.log("render");
+function Card({Icon, name, index, dispatch, state}: {Icon: Object}) {
     return (
-        <StyledCard open={openCard} onClick={() => setOpenCard(c => !c)}>
-            <Icon
-                className="icon"
-                size={45}
-                color={openCard ? "white" : "#02b3e4"}
-            />
+        <StyledCard
+            open={state.open.includes(index) || state.matched.includes(name)}
+            matched={state.matched.includes(name)}
+            onClick={() =>
+                state.open.length < 4 &&
+                state.open.includes(index) === false &&
+                state.matched.includes(name) === false &&
+                dispatch({type: "open", payload: [index, name]})
+            }
+        >
+            <Icon className="icon" size={45} />
         </StyledCard>
     );
 }

@@ -47,12 +47,54 @@ const Container = styled.div`
 
 const shuffleArr = arr => [...arr.sort(() => 0.5 - Math.random())];
 
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "open":
+            console.log("action payload", action.payload);
+            state = {...state, open: [...state.open, ...action.payload]};
+            return state;
+        case "close":
+            state = {...state, open: []};
+            return state;
+        case "matched":
+            state = {...state, matched: [...state.matched, action.payload]};
+            return state;
+        case "move":
+            state = {...state, moves: state.moves + 1};
+            return state;
+        default:
+            throw new Error();
+    }
+};
+
 function App() {
     const [icons, setIcons] = React.useState(() => shuffleArr(iconsArr));
+    const [state, dispatch] = React.useReducer(reducer, {
+        open: [],
+        matched: [],
+        moves: 0
+    });
+    React.useEffect(() => {
+        if (state.open.length === 4) {
+            if (state.open[1] === state.open[3]) {
+                dispatch({type: "matched", payload: state.open[1]});
+            }
+            setTimeout(() => {
+                dispatch({type: "close"});
+            }, 1000);
+        }
+    }, [state.open]);
     return (
         <Container>
             {icons.map((icon, i) => (
-                <Card key={i + icon} Icon={icon} />
+                <Card
+                    key={i + icon.name}
+                    Icon={icon}
+                    name={icon.name}
+                    index={i}
+                    dispatch={dispatch}
+                    state={state}
+                />
             ))}
             <button onClick={() => setIcons(icons => shuffleArr(icons))}>
                 Shuffle
