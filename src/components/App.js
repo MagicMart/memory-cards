@@ -44,6 +44,7 @@ const Container = styled.div`
 
 const Title = styled.h1`
     text-align: center;
+    font-size: 1.75rem;
     margin: 0.3em 0;
 `;
 
