@@ -62,7 +62,7 @@ const CardContainer = styled.div`
     box-shadow: 5px 5px 5px grey;
 `;
 
-const shuffleArr = arr => [...arr.sort(() => 0.5 - Math.random())];
+const shuffleArr = arr => [...arr].sort(() => 0.5 - Math.random());
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -81,7 +81,7 @@ const reducer = (state, action) => {
             return state;
         case "reset":
             state = {
-                icons: [...shuffleArr(state.icons)],
+                icons: shuffleArr(state.icons),
                 open: [],
                 matched: [],
                 moves: 0
@@ -118,8 +118,6 @@ function App() {
                 {state.icons.map((icon, i) => (
                     <Card
                         key={i + icon.name}
-                        Icon={icon}
-                        name={icon.name}
                         index={i}
                         dispatch={dispatch}
                         state={state}

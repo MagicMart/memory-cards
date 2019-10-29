@@ -41,18 +41,16 @@ const StyledCard = styled.div`
 `;
 
 function Card({
-    Icon,
-    name,
     index,
     dispatch,
     state
 }: {
-    Icon: Object,
-    name: string,
     index: number,
     state: Object,
     dispatch: Function
 }) {
+    const Icon = state.icons[index];
+    const name = state.icons[index].name;
     return (
         <StyledCard
             open={state.open.includes(index) || state.matched.includes(name)}
