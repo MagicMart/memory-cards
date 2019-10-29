@@ -49,18 +49,21 @@ function Card({
     state: Object,
     dispatch: Function
 }) {
-    const Icon = state.icons[index];
-    const name = state.icons[index].name;
+    const {open, matched, icons} = state;
+    const Icon = icons[index];
+    const name = icons[index].name;
+
+    const handleDispatch = () => {
+        open.length < 4 &&
+            open.includes(index) === false &&
+            matched.includes(name) === false &&
+            dispatch({type: "open", payload: [index, name]});
+    };
     return (
         <StyledCard
-            open={state.open.includes(index) || state.matched.includes(name)}
-            matched={state.matched.includes(name)}
-            onClick={() =>
-                state.open.length < 4 &&
-                state.open.includes(index) === false &&
-                state.matched.includes(name) === false &&
-                dispatch({type: "open", payload: [index, name]})
-            }
+            open={open.includes(index) || matched.includes(name)}
+            matched={matched.includes(name)}
+            onClick={handleDispatch}
         >
             <Icon className="icon" size={45} />
         </StyledCard>
