@@ -11,7 +11,7 @@ const StyledScorePanel = styled.div`
     padding: 0.3em;
 `;
 
-function ScorePanel({moves}) {
+function ScorePanel({moves, dispatch}) {
     return (
         <StyledScorePanel>
             <span>
@@ -19,7 +19,7 @@ function ScorePanel({moves}) {
             </span>
             <span>Moves {moves}</span>
             <span> Secs</span>
-            <span>
+            <span onClick={() => dispatch({type: "reset"})}>
                 <FaRedo />
             </span>
         </StyledScorePanel>

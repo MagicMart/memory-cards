@@ -79,8 +79,13 @@ const reducer = (state, action) => {
         case "matched":
             state = {...state, matched: [...state.matched, action.payload]};
             return state;
-        case "move":
-            state = {...state, moves: state.moves + 1};
+        case "reset":
+            state = {
+                icons: [...shuffleArr(state.icons)],
+                open: [],
+                matched: [],
+                moves: 0
+            };
             return state;
         default:
             throw new Error();
@@ -88,12 +93,13 @@ const reducer = (state, action) => {
 };
 
 function App() {
-    const [icons, setIcons] = React.useState(() => shuffleArr(iconsArr));
     const [state, dispatch] = React.useReducer(reducer, {
+        icons: shuffleArr(iconsArr),
         open: [],
         matched: [],
         moves: 0
     });
+
     React.useEffect(() => {
         if (state.open.length === 4) {
             if (state.open[1] === state.open[3]) {
@@ -107,11 +113,9 @@ function App() {
     return (
         <Container>
             <Title>Memory Game Cards</Title>
-
-            <ScorePanel moves={state.moves} />
-
+            <ScorePanel moves={state.moves} dispatch={dispatch} />
             <CardContainer>
-                {icons.map((icon, i) => (
+                {state.icons.map((icon, i) => (
                     <Card
                         key={i + icon.name}
                         Icon={icon}
@@ -121,9 +125,6 @@ function App() {
                         state={state}
                     />
                 ))}
-                <button onClick={() => setIcons(icons => shuffleArr(icons))}>
-                    Shuffle
-                </button>
             </CardContainer>
         </Container>
     );
