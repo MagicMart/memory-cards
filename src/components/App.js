@@ -37,6 +37,9 @@ const iconsArr = [
 const Container = styled.div`
     width: 500px;
     margin: 0 auto;
+    @media (max-width: 500px) {
+        width: 100vw;
+    }
 `;
 
 const Title = styled.h1`
@@ -47,9 +50,11 @@ const Title = styled.h1`
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
+    width: inherit;
     height: 500px;
-    margin: 0 auto;
+    @media (max-width: 500px) {
+        height: 100vw;
+    }
     padding: 7px;
     background: #03fcf0;
     border-radius: 15px;
@@ -99,11 +104,11 @@ function App() {
         }
     }, [state.open]);
     return (
-        <React.Fragment>
+        <Container>
             <Title>Memory Game Cards</Title>
-            <Container>
-                <ScorePanel moves={state.moves} />
-            </Container>
+
+            <ScorePanel moves={state.moves} />
+
             <CardContainer>
                 {icons.map((icon, i) => (
                     <Card
@@ -119,7 +124,7 @@ function App() {
                     Shuffle
                 </button>
             </CardContainer>
-        </React.Fragment>
+        </Container>
     );
 }
 

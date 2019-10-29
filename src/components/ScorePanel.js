@@ -7,6 +7,7 @@ const StyledScorePanel = styled.div`
     justify-content: space-evenly;
     font-size: 1.5rem;
     margin: 0.3em;
+    padding: 0.3em;
 `;
 
 function ScorePanel({moves}) {
