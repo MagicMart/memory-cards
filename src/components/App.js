@@ -81,12 +81,14 @@ const reducer = (state, action) => {
             return state;
         case "reset":
             state = {
-                icons: shuffleArr(state.icons),
+                icons: [],
                 open: [],
                 matched: [],
                 moves: 0
             };
             return state;
+        case "icons":
+            return {...state, icons: action.payload};
         default:
             throw new Error();
     }
@@ -94,11 +96,17 @@ const reducer = (state, action) => {
 
 function App() {
     const [state, dispatch] = React.useReducer(reducer, {
-        icons: shuffleArr(iconsArr),
+        icons: [],
         open: [],
         matched: [],
         moves: 0
     });
+
+    React.useEffect(() => {
+        if (state.icons.length === 0) {
+            dispatch({type: "icons", payload: shuffleArr(iconsArr)});
+        }
+    }, [state.icons]);
 
     React.useEffect(() => {
         if (state.open.length === 4) {
