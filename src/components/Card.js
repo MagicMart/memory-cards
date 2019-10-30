@@ -52,7 +52,7 @@ function Card({
     const {open, matched, icons} = state;
     const Icon = icons[index];
     const name = icons[index].name;
-
+    console.count(`render card ${index}`);
     const handleDispatch = () => {
         open.length < 4 &&
             open.includes(index) === false &&
@@ -70,4 +70,17 @@ function Card({
     );
 }
 
-export default Card;
+type Props = {
+    state: Object,
+    dispatch: Function,
+    index: number
+};
+
+export default React.memo<Props>(Card, (prevProps, nextProps) => {
+    const {index} = prevProps;
+    return (
+        // Card will re-render when this evaluates to false
+        prevProps.state.open.includes(index) ===
+        nextProps.state.open.includes(index)
+    );
+});
