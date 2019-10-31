@@ -51,12 +51,14 @@ const Title = styled.h1`
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
     width: inherit;
     height: 500px;
     @media (max-width: 500px) {
         height: 100vw;
     }
-    padding: 7px;
+    padding: 1%;
     background: #03fcf0;
     border-radius: 15px;
     box-shadow: 5px 5px 5px grey;

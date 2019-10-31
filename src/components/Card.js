@@ -30,7 +30,6 @@ const StyledCard = styled.div`
     align-items: center;
     width: 23%;
     height: 23%;
-    margin: 1%;
     background: ${props => (props.matched ? "green" : "#02b3e4")};
     border-radius: 15px;
     border: 1px solid grey;
@@ -65,7 +64,7 @@ function Card({
             matched={matched.includes(name)}
             onClick={handleDispatch}
         >
-            <Icon className="icon" size={45} />
+            <Icon className="icon" size={"50%"} />
         </StyledCard>
     );
 }
