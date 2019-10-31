@@ -126,7 +126,11 @@ function App() {
     return (
         <Container>
             <Title>Memory Game Cards</Title>
-            <ScorePanel moves={state.moves} dispatch={dispatch} />
+            <ScorePanel
+                moves={state.moves}
+                matched={state.matched}
+                dispatch={dispatch}
+            />
             <CardContainer>
                 {state.icons.map((icon, i) => (
                     <Card
