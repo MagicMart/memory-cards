@@ -71,15 +71,18 @@ const reducer = (state, action) => {
         case "open":
             state = {
                 ...state,
-                open: [...state.open, ...action.payload],
-                moves: state.moves + 1
+                open: [...state.open, ...action.payload]
             };
             return state;
         case "close":
-            state = {...state, open: []};
+            state = {...state, open: [], moves: state.moves + 1};
             return state;
         case "matched":
-            state = {...state, matched: [...state.matched, action.payload]};
+            state = {
+                ...state,
+                matched: [...state.matched, action.payload],
+                moves: state.moves + 1
+            };
             return state;
         case "reset":
             state = {
