@@ -128,7 +128,9 @@ function App() {
     }, [state.open]);
     return (
         <Container>
-            <EndGame matched={state.matched} dispatch={dispatch} />
+            {state.matched.length === 8 && (
+                <EndGame matched={state.matched} dispatch={dispatch} />
+            )}
             <Title>Memory Game Cards</Title>
             <ScorePanel
                 moves={state.moves}

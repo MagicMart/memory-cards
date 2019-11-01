@@ -37,9 +37,6 @@ function EndGame({
     matched: Array<string>,
     dispatch: Function
 }) {
-    if (matched.length !== 8) {
-        return null;
-    }
     return (
         <StyledEndGame>
             <div className="message">
