@@ -54,7 +54,7 @@ const Title = styled.h1`
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: inherit;
     height: 500px;
