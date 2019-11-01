@@ -7,7 +7,7 @@ import Secs from "./Secs";
 
 const StyledScorePanel = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     font-size: 1rem;
     font-family: monospace;
     margin: 0.3em;
