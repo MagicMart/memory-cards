@@ -14,6 +14,22 @@ const StyledScorePanel = styled.div`
     padding: 0.3em;
 `;
 
+function Stars({moves}: {moves: number}) {
+    return (
+        <span>
+            <span>
+                <FaStar color={"gold"} />
+            </span>
+            <span>
+                <FaStar color={moves < 20 ? "gold" : "grey"} />
+            </span>
+            <span>
+                <FaStar color={moves < 10 ? "gold" : "grey"} />
+            </span>
+        </span>
+    );
+}
+
 function ScorePanel({
     moves,
     matched,
@@ -25,9 +41,7 @@ function ScorePanel({
 }) {
     return (
         <StyledScorePanel>
-            <span>
-                <FaStar />
-            </span>
+            <Stars moves={moves} />
             <span>Moves {moves}</span>
             {moves > 0 ? (
                 <Secs moves={moves} matched={matched} />
