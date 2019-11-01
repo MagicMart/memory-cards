@@ -30,6 +30,12 @@ const StyledEndGame = styled.div`
     }
 `;
 
+const StyledFaWindowClose = styled(FaWindowClose)`
+    :hover {
+        color: red;
+    }
+`;
+
 function EndGame({
     matched,
     dispatch
@@ -42,7 +48,7 @@ function EndGame({
             <div className="message">
                 <span>End of Game </span>
                 <span>
-                    <FaWindowClose
+                    <StyledFaWindowClose
                         size={"48px"}
                         onClick={() => dispatch({type: "reset"})}
                     />
