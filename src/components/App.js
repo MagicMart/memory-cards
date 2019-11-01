@@ -1,9 +1,12 @@
 // @flow
 
 import React from "react";
+import styled from "styled-components";
+
 import Card from "./Card";
 import ScorePanel from "./ScorePanel";
-import styled from "styled-components";
+import EndGame from "./EndGame";
+
 import {
     FaBug,
     FaCoffee,
@@ -125,6 +128,7 @@ function App() {
     }, [state.open]);
     return (
         <Container>
+            <EndGame matched={state.matched} dispatch={dispatch} />
             <Title>Memory Game Cards</Title>
             <ScorePanel
                 moves={state.moves}
