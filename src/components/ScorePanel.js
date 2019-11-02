@@ -42,7 +42,7 @@ function ScorePanel({
     return (
         <StyledScorePanel>
             <Stars moves={moves} />
-            <span>Moves {moves}</span>
+            <span>Moves {String(moves).padStart(3, "0")}</span>
             {moves > 0 ? (
                 <Secs moves={moves} matched={matched} />
             ) : (
