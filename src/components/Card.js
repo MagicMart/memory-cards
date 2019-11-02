@@ -2,6 +2,27 @@
 
 import React from "react";
 import styled, {keyframes} from "styled-components";
+import {
+    FaBug,
+    FaCoffee,
+    FaUserSecret,
+    FaMicrochip,
+    FaBath,
+    FaFireExtinguisher,
+    FaKeyboard,
+    FaCode
+} from "react-icons/fa";
+
+const iconsStore = {
+    FaBug,
+    FaCoffee,
+    FaUserSecret,
+    FaMicrochip,
+    FaBath,
+    FaFireExtinguisher,
+    FaKeyboard,
+    FaCode
+};
 
 const faceUp = keyframes`
   from {
@@ -40,28 +61,28 @@ const StyledCard = styled.div`
 `;
 
 function Card({
+    icon,
     index,
     dispatch,
     state
 }: {
+    icon: string,
     index: number,
     state: Object,
     dispatch: Function
 }) {
-    const {open, matched, icons} = state;
-    const Icon = icons[index];
-    const name = icons[index].name;
-    console.count(`render card ${index}`);
+    const Icon = iconsStore[icon];
+    const {open, matched} = state;
     const handleDispatch = () => {
         open.length < 4 &&
             open.includes(index) === false &&
-            matched.includes(name) === false &&
-            dispatch({type: "open", payload: [index, name]});
+            matched.includes(icon) === false &&
+            dispatch({type: "open", payload: [index, icon]});
     };
     return (
         <StyledCard
-            open={open.includes(index) || matched.includes(name)}
-            matched={matched.includes(name)}
+            open={open.includes(index) || matched.includes(icon)}
+            matched={matched.includes(icon)}
             onClick={handleDispatch}
         >
             <Icon className="icon" size={"50%"} />
@@ -70,6 +91,7 @@ function Card({
 }
 
 type Props = {
+    icon: string,
     state: Object,
     dispatch: Function,
     index: number

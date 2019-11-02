@@ -7,34 +7,23 @@ import Card from "./Card";
 import ScorePanel from "./ScorePanel";
 import EndGame from "./EndGame";
 
-import {
-    FaBug,
-    FaCoffee,
-    FaUserSecret,
-    FaMicrochip,
-    FaBath,
-    FaFireExtinguisher,
-    FaKeyboard,
-    FaCode
-} from "react-icons/fa";
-
 const iconsArr = [
-    FaBug,
-    FaBug,
-    FaCoffee,
-    FaCoffee,
-    FaUserSecret,
-    FaUserSecret,
-    FaMicrochip,
-    FaMicrochip,
-    FaBath,
-    FaBath,
-    FaFireExtinguisher,
-    FaFireExtinguisher,
-    FaKeyboard,
-    FaKeyboard,
-    FaCode,
-    FaCode
+    "FaBug",
+    "FaBug",
+    "FaCoffee",
+    "FaCoffee",
+    "FaUserSecret",
+    "FaUserSecret",
+    "FaMicrochip",
+    "FaMicrochip",
+    "FaBath",
+    "FaBath",
+    "FaFireExtinguisher",
+    "FaFireExtinguisher",
+    "FaKeyboard",
+    "FaKeyboard",
+    "FaCode",
+    "FaCode"
 ];
 
 const Container = styled.div`
@@ -140,7 +129,8 @@ function App() {
             <CardContainer>
                 {state.icons.map((icon, i) => (
                     <Card
-                        key={i + icon.name}
+                        icon={icon}
+                        key={i + icon}
                         index={i}
                         dispatch={dispatch}
                         state={state}
