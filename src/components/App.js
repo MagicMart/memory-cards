@@ -63,7 +63,8 @@ const reducer = (state, action) => {
         case "open":
             state = {
                 ...state,
-                open: [...state.open, ...action.payload]
+                open: [...state.open, ...action.payload],
+                moves: state.moves === -1 ? 0 : state.moves
             };
             return state;
         case "close":
@@ -72,8 +73,7 @@ const reducer = (state, action) => {
         case "matched":
             state = {
                 ...state,
-                matched: [...state.matched, action.payload],
-                moves: state.moves + 1
+                matched: [...state.matched, action.payload]
             };
             return state;
         case "reset":
@@ -81,7 +81,7 @@ const reducer = (state, action) => {
                 icons: [],
                 open: [],
                 matched: [],
-                moves: 0
+                moves: -1
             };
             return state;
         case "icons":
@@ -96,7 +96,7 @@ function App() {
         icons: [],
         open: [],
         matched: [],
-        moves: 0
+        moves: -1
     });
 
     React.useEffect(() => {
