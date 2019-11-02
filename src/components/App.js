@@ -132,7 +132,7 @@ function App() {
             <CardContainer>
                 {state.icons.map((icon, i) => (
                     <Card
-                        icon={icon}
+                        iconName={icon}
                         key={i + icon}
                         index={i}
                         dispatch={dispatch}

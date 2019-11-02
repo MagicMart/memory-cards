@@ -61,28 +61,28 @@ const StyledCard = styled.div`
 `;
 
 function Card({
-    icon,
+    iconName,
     index,
     dispatch,
     state
 }: {
-    icon: string,
+    iconName: string,
     index: number,
     state: Object,
     dispatch: Function
 }) {
-    const Icon = iconsStore[icon];
+    const Icon = iconsStore[iconName];
     const {open, matched} = state;
     const handleDispatch = () => {
         open.length < 4 &&
             open.includes(index) === false &&
-            matched.includes(icon) === false &&
-            dispatch({type: "open", payload: [index, icon]});
+            matched.includes(iconName) === false &&
+            dispatch({type: "open", payload: [index, iconName]});
     };
     return (
         <StyledCard
-            open={open.includes(index) || matched.includes(icon)}
-            matched={matched.includes(icon)}
+            open={open.includes(index) || matched.includes(iconName)}
+            matched={matched.includes(iconName)}
             onClick={handleDispatch}
         >
             <Icon className="icon" size={"50%"} />
@@ -91,7 +91,7 @@ function Card({
 }
 
 type Props = {
-    icon: string,
+    iconName: string,
     state: Object,
     dispatch: Function,
     index: number
