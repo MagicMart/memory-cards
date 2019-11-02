@@ -101,7 +101,10 @@ function App() {
 
     React.useEffect(() => {
         if (state.icons.length === 0) {
-            dispatch({type: "icons", payload: shuffleArr(iconsArr)});
+            dispatch({
+                type: "icons",
+                payload: shuffleArr(shuffleArr(iconsArr))
+            });
         }
     }, [state.icons]);
 
