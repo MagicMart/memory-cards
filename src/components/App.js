@@ -61,29 +61,29 @@ const shuffleArr = arr => [...arr].sort(() => 0.5 - Math.random());
 const reducer = (state, action) => {
     switch (action.type) {
         case "open":
-            state = {
+            return {
                 ...state,
                 open: [...state.open, ...action.payload],
                 moves: state.moves === -1 ? 0 : state.moves
             };
-            return state;
+
         case "close":
-            state = {...state, open: [], moves: state.moves + 1};
-            return state;
+            return {...state, open: [], moves: state.moves + 1};
+
         case "matched":
-            state = {
+            return {
                 ...state,
                 matched: [...state.matched, action.payload]
             };
-            return state;
+
         case "reset":
-            state = {
+            return {
                 icons: [],
                 open: [],
                 matched: [],
                 moves: -1
             };
-            return state;
+
         case "icons":
             return {...state, icons: action.payload};
         default:
