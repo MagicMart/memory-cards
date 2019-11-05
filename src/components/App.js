@@ -63,12 +63,12 @@ const reducer = (state, action) => {
         case "open":
             return {
                 ...state,
-                open: [...state.open, ...action.payload],
+                opened: [...state.opened, ...action.payload],
                 moves: state.moves === -1 ? 0 : state.moves
             };
 
         case "close":
-            return {...state, open: [], moves: state.moves + 1};
+            return {...state, opened: [], moves: state.moves + 1};
 
         case "matched":
             return {
@@ -79,7 +79,7 @@ const reducer = (state, action) => {
         case "reset":
             return {
                 icons: [],
-                open: [],
+                opened: [],
                 matched: [],
                 moves: -1
             };
@@ -94,7 +94,7 @@ const reducer = (state, action) => {
 function App() {
     const [state, dispatch] = React.useReducer(reducer, {
         icons: [],
-        open: [],
+        opened: [],
         matched: [],
         moves: -1
     });
@@ -109,15 +109,15 @@ function App() {
     }, [state.icons]);
 
     React.useEffect(() => {
-        if (state.open.length === 4) {
-            if (state.open[1] === state.open[3]) {
-                dispatch({type: "matched", payload: state.open[1]});
+        if (state.opened.length === 4) {
+            if (state.opened[1] === state.opened[3]) {
+                dispatch({type: "matched", payload: state.opened[1]});
             }
             setTimeout(() => {
                 dispatch({type: "close"});
             }, 600);
         }
-    }, [state.open]);
+    }, [state.opened]);
     return (
         <Container>
             {state.matched.length === 8 && (
