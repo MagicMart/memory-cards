@@ -61,6 +61,9 @@ const shuffleArr = arr => [...arr].sort(() => 0.5 - Math.random());
 const reducer = (state, action) => {
     switch (action.type) {
         case "open":
+            if (state.opened.length === 4) {
+                return state;
+            }
             return {
                 ...state,
                 opened: [...state.opened, ...action.payload],
