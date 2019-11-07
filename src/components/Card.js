@@ -75,7 +75,6 @@ function Card({
     matched: boolean,
     dispatch: Function
 }) {
-    console.log("render", index);
     const Icon = iconsStore[iconName];
     const handleDispatch = () => {
         open === false &&
