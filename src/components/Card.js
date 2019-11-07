@@ -51,12 +51,14 @@ const StyledCard = styled.div`
     align-items: center;
     width: 23%;
     height: 23%;
-    background: ${props => (props.matched ? "green" : "#02b3e4")};
+    background: ${props =>
+        props.matched ? "green" : props.open ? "#02b3e4" : "#2e3d49"};
     border-radius: 15px;
     border: 1px solid grey;
     .icon {
         animation: inherit;
-        color: ${props => (props.open || props.matched ? "white" : "#02b3e4")};
+        color: ${props =>
+            props.open || props.matched ? "#ffffff" : "#2e3d49"};
     }
 `;
 
