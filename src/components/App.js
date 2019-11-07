@@ -139,7 +139,8 @@ function App() {
                         key={i + icon}
                         index={i}
                         dispatch={dispatch}
-                        state={state}
+                        open={state.opened.includes(i)}
+                        matched={state.matched.includes(icon)}
                     />
                 ))}
             </CardContainer>

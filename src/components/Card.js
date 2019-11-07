@@ -66,25 +66,26 @@ function Card({
     iconName,
     index,
     dispatch,
-    state
+    open,
+    matched
 }: {
     iconName: string,
     index: number,
-    state: Object,
+    open: boolean,
+    matched: boolean,
     dispatch: Function
 }) {
+    console.log("render", index);
     const Icon = iconsStore[iconName];
-    const {opened, matched} = state;
     const handleDispatch = () => {
-        opened.length < 4 &&
-            opened.includes(index) === false &&
-            matched.includes(iconName) === false &&
+        open === false &&
+            matched === false &&
             dispatch({type: "open", payload: [index, iconName]});
     };
     return (
         <StyledCard
-            open={opened.includes(index) || matched.includes(iconName)}
-            matched={matched.includes(iconName)}
+            open={open || matched}
+            matched={matched}
             onClick={handleDispatch}
         >
             <Icon className="icon" size={"50%"} />
@@ -94,16 +95,10 @@ function Card({
 
 type Props = {
     iconName: string,
-    state: Object,
-    dispatch: Function,
-    index: number
+    index: number,
+    open: boolean,
+    matched: boolean,
+    dispatch: Function
 };
 
-export default React.memo<Props>(Card, (prevProps, nextProps) => {
-    const {index} = prevProps;
-    return (
-        // Card will re-render when this evaluates to false
-        prevProps.state.opened.includes(index) ===
-        nextProps.state.opened.includes(index)
-    );
-});
+export default React.memo<Props>(Card);
