@@ -35,11 +35,11 @@ function Stars({moves}: {moves: number}) {
 
 function ScorePanel({
     moves,
-    matched,
+    gameOver,
     dispatch
 }: {
     moves: number,
-    matched: Array<string>,
+    gameOver: boolean,
     dispatch: Function
 }) {
     return (
@@ -52,7 +52,7 @@ function ScorePanel({
                 </span>
             </span>
             {moves > -1 ? (
-                <Secs moves={moves} matched={matched} />
+                <Secs gameOver={gameOver} />
             ) : (
                 <span>
                     Secs <span className="number">000</span>

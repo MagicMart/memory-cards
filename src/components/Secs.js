@@ -2,7 +2,8 @@
 
 import React from "react";
 
-function Secs({moves, matched}: {moves: number, matched: Array<string>}) {
+function Secs({gameOver}: {gameOver: boolean}) {
+    console.log("Secs render");
     const [secs, setSecs] = React.useState(0);
     const id = React.useRef(null);
 
@@ -14,10 +15,10 @@ function Secs({moves, matched}: {moves: number, matched: Array<string>}) {
     }, []);
 
     React.useEffect(() => {
-        if (matched.length === 8) {
+        if (gameOver) {
             window.clearInterval(id.current);
         }
-    }, [matched]);
+    }, [gameOver]);
 
     return (
         <span>
@@ -27,4 +28,8 @@ function Secs({moves, matched}: {moves: number, matched: Array<string>}) {
     );
 }
 
-export default Secs;
+type Props = {
+    gameOver: boolean
+};
+
+export default React.memo<Props>(Secs);

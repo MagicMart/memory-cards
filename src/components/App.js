@@ -129,7 +129,7 @@ function App() {
             <Title>Memory Game Cards</Title>
             <ScorePanel
                 moves={state.moves}
-                matched={state.matched}
+                gameOver={state.matched.length === 8}
                 dispatch={dispatch}
             />
             <CardContainer>
