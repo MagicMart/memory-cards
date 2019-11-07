@@ -118,7 +118,7 @@ function App() {
             }
             setTimeout(() => {
                 dispatch({type: "close"});
-            }, 600);
+            }, 500);
         }
     }, [state.opened]);
     return (
