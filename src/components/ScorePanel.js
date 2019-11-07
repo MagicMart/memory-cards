@@ -12,6 +12,9 @@ const StyledScorePanel = styled.div`
     font-family: monospace;
     margin: 0.3em;
     padding: 0.3em;
+    .number {
+        color: green;
+    }
 `;
 
 function Stars({moves}: {moves: number}) {
@@ -42,11 +45,18 @@ function ScorePanel({
     return (
         <StyledScorePanel>
             <Stars moves={moves} />
-            <span>Moves {String(moves > -1 ? moves : 0).padStart(3, "0")}</span>
+            <span>
+                Moves{" "}
+                <span className="number">
+                    {String(moves > -1 ? moves : 0).padStart(3, "0")}
+                </span>
+            </span>
             {moves > -1 ? (
                 <Secs moves={moves} matched={matched} />
             ) : (
-                <span>Secs 000</span>
+                <span>
+                    Secs <span className="number">000</span>
+                </span>
             )}
 
             <span onClick={() => dispatch({type: "reset"})}>

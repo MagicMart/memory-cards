@@ -19,7 +19,12 @@ function Secs({moves, matched}: {moves: number, matched: Array<string>}) {
         }
     }, [matched]);
 
-    return <span> Secs {String(secs).padStart(3, "0")}</span>;
+    return (
+        <span>
+            {" "}
+            Secs <span className="number">{String(secs).padStart(3, "0")}</span>
+        </span>
+    );
 }
 
 export default Secs;
