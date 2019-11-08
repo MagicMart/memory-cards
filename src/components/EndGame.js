@@ -36,13 +36,7 @@ const StyledFaWindowClose = styled(FaWindowClose)`
     }
 `;
 
-function EndGame({
-    matched,
-    dispatch
-}: {
-    matched: Array<string>,
-    dispatch: Function
-}) {
+function EndGame({dispatch}: {dispatch: Function}) {
     return (
         <StyledEndGame>
             <div className="message">
