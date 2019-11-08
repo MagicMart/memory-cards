@@ -3,7 +3,6 @@
 import React from "react";
 
 function Secs({gameOver}: {gameOver: boolean}) {
-    console.log("Secs render");
     const [secs, setSecs] = React.useState(0);
     const id = React.useRef(null);
 

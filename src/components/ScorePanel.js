@@ -66,4 +66,10 @@ function ScorePanel({
     );
 }
 
-export default ScorePanel;
+type Props = {
+    moves: number,
+    gameOver: boolean,
+    dispatch: Function
+};
+
+export default React.memo<Props>(ScorePanel);
