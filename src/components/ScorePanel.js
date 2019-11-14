@@ -17,7 +17,7 @@ const StyledScorePanel = styled.div`
     }
 `;
 
-function Stars({moves}: {moves: number}) {
+function Stars({moves}) {
     return (
         <span>
             <span>
@@ -33,15 +33,13 @@ function Stars({moves}: {moves: number}) {
     );
 }
 
-function ScorePanel({
-    moves,
-    gameOver,
-    dispatch
-}: {
+type Props = {
     moves: number,
     gameOver: boolean,
     dispatch: Function
-}) {
+};
+
+function ScorePanel({moves, gameOver, dispatch}: Props) {
     return (
         <StyledScorePanel>
             <Stars moves={moves} />
@@ -65,11 +63,5 @@ function ScorePanel({
         </StyledScorePanel>
     );
 }
-
-type Props = {
-    moves: number,
-    gameOver: boolean,
-    dispatch: Function
-};
 
 export default React.memo<Props>(ScorePanel);

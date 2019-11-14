@@ -62,19 +62,15 @@ const StyledCard = styled.div`
     }
 `;
 
-function Card({
-    iconName,
-    index,
-    dispatch,
-    open,
-    matched
-}: {
+type Props = {
     iconName: string,
     index: number,
     open: boolean,
     matched: boolean,
     dispatch: Function
-}) {
+};
+
+function Card({iconName, index, dispatch, open, matched}: Props) {
     const Icon = iconsStore[iconName];
     const handleDispatch = () => {
         open === false &&
@@ -91,13 +87,5 @@ function Card({
         </StyledCard>
     );
 }
-
-type Props = {
-    iconName: string,
-    index: number,
-    open: boolean,
-    matched: boolean,
-    dispatch: Function
-};
 
 export default React.memo<Props>(Card);

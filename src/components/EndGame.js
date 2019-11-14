@@ -36,7 +36,11 @@ const StyledFaWindowClose = styled(FaWindowClose)`
     }
 `;
 
-function EndGame({dispatch}: {dispatch: Function}) {
+type Props = {
+    dispatch: Function
+};
+
+function EndGame({dispatch}: Props) {
     return (
         <StyledEndGame>
             <div className="message">

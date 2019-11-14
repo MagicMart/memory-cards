@@ -2,7 +2,7 @@
 
 import React from "react";
 
-function Secs({gameOver}: {gameOver: boolean}) {
+function Secs({gameOver}) {
     const [secs, setSecs] = React.useState(0);
     const id = React.useRef(null);
 
