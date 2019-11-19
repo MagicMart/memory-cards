@@ -32,28 +32,26 @@ const Container = styled.div`
     @media (max-width: 500px) {
         width: 100vw;
     }
-`;
-
-const Title = styled.h1`
-    text-align: center;
-    font-size: 1.75rem;
-    margin: 0.3em 0;
-`;
-
-const CardContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    width: inherit;
-    height: 500px;
-    @media (max-width: 500px) {
-        height: 100vw;
+    h1 {
+        text-align: center;
+        font-size: 1.75rem;
+        margin: 0.3em 0;
     }
-    padding: 1%;
-    background: #03fcf0;
-    border-radius: 15px;
-    box-shadow: 5px 5px 5px grey;
+    .cardContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        width: inherit;
+        height: 500px;
+        @media (max-width: 500px) {
+            height: 100vw;
+        }
+        padding: 1%;
+        background: #03fcf0;
+        border-radius: 15px;
+        box-shadow: 5px 5px 5px grey;
+    }
 `;
 
 const shuffleArr = arr => [...arr].sort(() => 0.5 - Math.random());
@@ -124,13 +122,13 @@ function App() {
     return (
         <Container>
             {state.matched.length === 8 && <EndGame dispatch={dispatch} />}
-            <Title>Memory Game Cards</Title>
+            <h1>Memory Game Cards</h1>
             <ScorePanel
                 moves={state.moves}
                 gameOver={state.matched.length === 8}
                 dispatch={dispatch}
             />
-            <CardContainer>
+            <div className="cardContainer">
                 {state.icons.map((icon, i) => (
                     <Card
                         iconName={icon}
@@ -141,7 +139,7 @@ function App() {
                         matched={state.matched.includes(icon)}
                     />
                 ))}
-            </CardContainer>
+            </div>
         </Container>
     );
 }
