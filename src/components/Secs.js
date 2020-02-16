@@ -7,15 +7,15 @@ function Secs({gameOver}) {
     const id = React.useRef(null);
 
     React.useEffect(() => {
-        id.current = window.setInterval(() => {
+        id.current = window.setTimeout(() => {
             setSecs(secs => secs + 1);
         }, 1000);
-        return () => window.clearInterval(id.current);
-    }, []);
+        return () => window.clearTimeout(id.current);
+    }, [secs]);
 
     React.useEffect(() => {
         if (gameOver) {
-            window.clearInterval(id.current);
+            window.clearTimeout(id.current);
         }
     }, [gameOver]);
 
