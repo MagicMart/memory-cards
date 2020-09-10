@@ -67,7 +67,7 @@ type Props = {
     index: number,
     open: boolean,
     matched: boolean,
-    dispatch: Function
+    dispatch: (({type:"open", payload: [number, string]})) => void
 };
 
 function Card({iconName, index, dispatch, open, matched}: Props) {
