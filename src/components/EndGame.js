@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import {FaWindowClose} from "react-icons/fa";
+import { FaWindowClose } from "react-icons/fa";
 
 const StyledEndGame = styled.div`
     position: fixed;
@@ -40,7 +40,7 @@ type Props = {
     dispatch: Function
 };
 
-function EndGame({dispatch}: Props) {
+function EndGame({ dispatch }: Props) {
     return (
         <StyledEndGame>
             <div className="message">
@@ -48,7 +48,7 @@ function EndGame({dispatch}: Props) {
                 <span>
                     <StyledFaWindowClose
                         size={"48px"}
-                        onClick={() => dispatch({type: "reset"})}
+                        onClick={() => dispatch({ type: "reset" })}
                     />
                 </span>
             </div>
